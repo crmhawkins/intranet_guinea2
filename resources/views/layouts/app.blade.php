@@ -72,13 +72,13 @@
         <div class="page-wrapper chiller-theme toggled sticky-sidebar" id="wrapper" style="height:100vh !important">
             @include('layouts.header')
             <div class="content-page" style="height:100% !important">
-                <div class="content" style="height:91% !important">
+                <div class="content" style="height:91%; display:flex; !important">
                     {{-- @livewire('container-component') --}}
                     @yield('content-principal')
 
-                    @yield('content-factura')
+                    
                     {{-- @yield('content') --}}
-
+                    
                 </div>
 
             </div>

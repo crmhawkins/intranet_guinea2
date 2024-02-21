@@ -34,6 +34,6 @@ class HomeController extends Controller
     {
         $user = $request->user();
 
-       return view('home', compact('user'));
+       return view('notas.index', compact('user'));
     }
 }
