@@ -1,13 +1,17 @@
 <!-- contenedor-sidebar -->
 <!-- Top Bar Start -->
+<style>
+    .modal-backdrop{
+        z-index: 1;
+    }
+</style>
 <div class="topbar">
-
     <!-- LOGO -->
     @mobile
         <div class="topbar-left" style="margin-bottom: -144px !important;">
             <span class="logo-sm">
                 <a href="{{ route('home') }}"><img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}"
-                        alt="Logo La Fabrica"></a>
+                        ></a>
             </span>
         </div>
         @elsenotmobile
@@ -15,20 +19,21 @@
             <div class="topbar-left" style="margin-bottom: -144px !important;">
                 <span class="logo-sm">
                     <a href="{{ route('home') }}"><img class="img-fluid p-1" src="{{ asset('assets/images/logo-empresa.png') }}"
-                            alt="Logo La Fabrica"></a>
+                            ></a>
                 </span>
             </div>
         @elsetablet
             <div class="topbar-left" style="margin-bottom: -144px !important;">
                 <span class="logo-light">
                     <a href="{{ route('home') }}"><img class="img-fluid p-4" src="{{ asset('assets/images/logo-empresa.png') }}"
-                            alt="Logo La Fabrica"></a>
+                           ></a>
                     {{-- <i class="mdi mdi-camera-control"></i> La Fabrica --}}
                 </span>
             </div>
         @endtablet
 
     @endmobile
+
     <nav class="navbar-custom">
         <ul class="navbar-right list-inline float-right mb-0">
             <!-- language-->
@@ -51,6 +56,21 @@
                     <i class="mdi mdi-arrow-expand-all noti-icon"></i>
                 </a>
             </li>
+            <li class="dropdown notification-list list-inline-item d-none d-md-inline-block">
+                <div class="col-1 col-md-1 header_user text-left">
+                    <a class="alert-button" data-toggle="modal" data-target="#modalAlertas" style="position:relative; color:white;">
+                        <i class="fa-regular fa-bell fa-xl"></i>
+                        <span class="badge badge-secondary" id="alertasPendientes"
+                            style="position: absolute;
+                                        top: -9px;
+                                        right: -11px;">{{count($notificaciones)}}</span>
+                    </a>
+                   
+                </div>
+            </li>
+           
+
+
 
             <li class="dropdown notification-list list-inline-item">
                 <div class="dropdown notification-list nav-pro-img">
@@ -102,5 +122,19 @@
 
     </nav>
 
+    <div class="modal fade" id="modalAlertas" tabindex="-1" role="dialog">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="form-title">Alertas de hoy:</h3>
+                </div>
+                <div class="modal-body" tabindex="-1">
+                    @livewire('lista-alertas')
+                </div>
+                <div class="modal-footer">
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 <!-- Top Bar End -->

@@ -2,6 +2,7 @@
 
 namespace App\Http\Livewire\Notas;
 
+use App\Models\Alertas;
 use App\Models\Nota;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -99,6 +100,22 @@ class IndexComponent extends Component
 
         // Alertas de guardado exitoso
         if ($noteSaved) {
+
+            if($this->author !== $this->user_id){
+                $user_id = $this->user_id;
+            }else{
+                $user_id = $this->socio_id;
+            }
+            $alerta = Alertas::create([
+                'admin_user_id' => $user_id,
+                'titulo' => 'Tienes una nota nueva',
+                'tipo' => 3,
+                'datetime' => now(),
+                'descripcion' => $this->descripcion
+            ]);
+
+
+
             $this->alert('success', '¡Nota enviada correctamente!', [
                 'position' => 'center',
                 'timer' => 3000,
