@@ -3,6 +3,6 @@
 
 @section('content-principal')
 <div>
-    @livewire('notas.index-component', ['identificador'=>$id])
+    @livewire('notas.users-component')
 </div>
 @endsection

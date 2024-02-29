@@ -63,9 +63,17 @@
                             <a class="dropdown-item" href="{{ route('usuarios.index') }}"><i
                                     class="mdi mdi-user"></i>Gestionar usuarios</a>
                             <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{{ route('notes.users') }}"><i
+                                    class="mdi mdi-user"></i>Notas</a>
+                            <div class="dropdown-divider"></div>
+                        @else
+                            <a class="dropdown-item" href="{{ route('notes.from', Auth::user()->id) }}"><i
+                                    class="mdi mdi-user"></i>Notas</a>
+                            <div class="dropdown-divider"></div>
                         @endif
                         {{-- Formulario invisible para que Laravel detecte el cierre de sesión como POST. --}}
                         @auth
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>

@@ -15,10 +15,9 @@
             background: white;
         }
     </style>
-    <iframe src="/laravel-filemanager" style="width: 91%; height: 100%;"></iframe>
-    <div style="width: 30%; height: 100%;">
+    <iframe src="/laravel-filemanager" style="width: 100%; height: 100%;"></iframe>
+    {{-- <div style="width: 35%; height: 100%;">
         @yield('notes')
-        {{-- @yield('send-note') --}}
-    </div>
+    </div> --}}
     
 @endsection

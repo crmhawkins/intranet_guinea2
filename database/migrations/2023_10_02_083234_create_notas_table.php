@@ -19,6 +19,7 @@ return new class extends Migration
             $table->bigInteger('user_id')->nullable();
             $table->string('descripcion')->nullable();
             $table->date('fecha')->nullable();
+            $table->bigInteger('author')->nullable();
             $table->timestamps();
         });
     }

@@ -15,6 +15,7 @@ class Nota extends Model
         'user_id',
         'descripcion',
         'fecha',
+        'author'
     ];
 
     /**

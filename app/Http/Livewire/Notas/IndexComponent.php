@@ -3,39 +3,76 @@
 namespace App\Http\Livewire\Notas;
 
 use App\Models\Nota;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use Livewire\Component;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Collection;
 
 class IndexComponent extends Component
 {
     use LivewireAlert;
 
     // public $search;
+    public $identificador;
+
     public $notas;
     public $user_id;
     public $socio_id;
     public $descripcion;
+    public $currentUserId;
+    public $targetName;
+    private $author;
+    private $fecha;
 
 
     public function mount()
     {
-        $this->notas = Nota::all()->take(5);
     }
 
     public function render()
     {
+        $user = User::find($this->identificador);
+        // dd($this->identificador);   
+        if($this->identificador === Auth::user()->id){
+            $this->targetName = $user->name;
+            // dd($user);
+        }else{
+            $this->targetName = User::find(1)->name;
+            // dd($this->targetName);
+        }
+        
+        
+            $this->notas = DB::table('notas')->where('user_id', $user->id)->orderByDesc('created_at')->take(5)->get()->reverse()->values();
+
+
+            // dd($this->notas);
+
+
+        $this->currentUserId = Auth::user()->id;
 
         return view('livewire.notas.index-component');
     }
 
     public function submit()
     {
+        $this->author = Auth::user()->id; 
+        $this->fecha = now();
 
         if(Auth::user()->role == 1){
-            $socio_id = Auth::user()->id;
+            $this->socio_id = Auth::user()->id;
+            $this->user_id = $this->identificador;
         } else {
-            $user_id = Auth::user()->id;
+            $lastNote = $this->notas->first();
+
+            if($lastNote){
+                $this->socio_id = $lastNote['socio_id'];
+            } else {
+                $this->socio_id = 1;
+            }
+            
+            $this->user_id = Auth::user()->id;
         }
 
         // Validación de datos
@@ -52,7 +89,10 @@ class IndexComponent extends Component
 
         $validatedData['user_id'] = $this->user_id;
         $validatedData['socio_id'] = $this->socio_id;
-
+        $validatedData['author'] = $this->author;
+        $validatedData['fecha'] = $this->fecha;
+        
+        // dd($validatedData);
         // Guardar datos validados
         $noteSaved = Nota::create($validatedData);
         // event(new \App\Events\LogEvent(Auth::user(), 20, $monitorSave->id));
@@ -90,6 +130,9 @@ class IndexComponent extends Component
     public function confirmed()
     {
         // Do something
+        if($this->identificador){
+            return redirect()->route('notes.from', $this->identificador);
+        }
         return redirect()->route('home');
     }
 

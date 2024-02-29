@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\DB;
 
 
 
-class HomeController extends Controller
+class NotaController extends Controller
 {
     // /**
     //  * Create a new controller instance.
@@ -30,15 +30,18 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index(Request $request)
+    public function notesFrom($id)
     {
-    //     $user = $request->user();
-
-    //     if($user->role === 1){
-    //         return view('notas.users');
-    //     }
-    //    return view('notas.index', compact('user'));
-
-    return view('home');
+        return view('notas.index', compact('id'));
     }
+    public function index()
+    {
+        return view('notas.index');
+    }
+    public function notesUsers()
+    {
+        return view('notas.users');
+    }
+
+
 }
