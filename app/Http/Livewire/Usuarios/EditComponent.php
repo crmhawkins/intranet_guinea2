@@ -12,6 +12,8 @@ use Illuminate\Support\Facades\Storage;
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 use Livewire\Component;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+
 
 class EditComponent extends Component
 {
@@ -65,7 +67,10 @@ class EditComponent extends Component
 
         if ($this->password == null) {
             $this->password = $usuarios->password;
+        }else{
+            $this->password = Hash::make($this->password);
         }
+
         // Validación de datos
         $validatedData = $this->validate(
             [

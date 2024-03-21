@@ -76,9 +76,9 @@
                     {{-- @livewire('container-component') --}}
                     @yield('content-principal')
 
-                    
+
                     {{-- @yield('content') --}}
-                    
+
                 </div>
 
             </div>

@@ -13,14 +13,8 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('incidencias', function (Blueprint $table) {
-            $table->id();
-            $table->bigInteger('comunidad_id');
-            $table->string('ruta_imagen');
-            $table->string('nombre');
-            $table->integer('telefono');
-            $table->timestamp('fecha');
-            $table->timestamps();
+        Schema::table('alertas', function (Blueprint $table) {
+            //
         });
     }
 
@@ -31,6 +25,8 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('incidencias');
+        Schema::table('alertas', function (Blueprint $table) {
+            //
+        });
     }
 };
