@@ -16,7 +16,7 @@ class FileManagerAccess
             session(['lfm.user_field' => null]);
         } else {
             // Asignar la ruta del directorio del usuario actual a la sesión
-            session(['lfm.user_field' => 'user_' . $user->id]);
+            session(['lfm.user_field' => $user->id . ' ' . str_replace(' ', '_', $user->name) . str_replace(' ', '_', $user->surname)]);
         }
 
         return $next($request);

@@ -16,7 +16,7 @@ class ConfigHandler
             return '';
         } else {
             // Retorna una carpeta específica para el usuario basada en su ID o nombre de usuario
-            return 'user_' . $user->id . ' ' . str_replace(' ', '_', $user->name) . str_replace(' ', '_', $user->surname);
+            return $user->id . ' ' . str_replace(' ', '_', $user->name) . str_replace(' ', '_', $user->surname);
         }
     }
 }
