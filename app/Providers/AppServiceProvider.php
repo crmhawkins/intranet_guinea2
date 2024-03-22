@@ -19,7 +19,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-       
+
     }
 
     /**
@@ -39,7 +39,7 @@ class AppServiceProvider extends ServiceProvider
 
         View::composer('layouts.header', function ($view) {
             if (Auth::check()) { // Asegúrate de que el usuario está autenticado
-                $notificaciones = Alertas::where('admin_user_id', Auth::id())->where('tipo', 3)->where('url', null)->get();
+                $notificaciones = Alertas::where('user_id', Auth::id())->where('tipo', 3)->where('url', null)->get();
                 $view->with('notificaciones', $notificaciones);
             }
         });

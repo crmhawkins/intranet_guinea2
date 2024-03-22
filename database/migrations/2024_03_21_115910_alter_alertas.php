@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::table('alertas', function (Blueprint $table) {
-            $table->renameColumn('user_id','admin_user_id')->nullable;
             $table->string('titulo')->nullable;
             $table->integer('tipo')->nullable;
             $table->string('ruta_archivo')->nullable;
@@ -30,7 +29,6 @@ return new class extends Migration
     public function down()
     {
         Schema::table('alertas', function (Blueprint $table) {
-            $table->renameColumn('admin_user_id','user_id');
             $table->dropColumn('titulo');
             $table->dropColumn('tipo');
             $table->dropColumn('ruta_archivo');

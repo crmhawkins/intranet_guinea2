@@ -13,7 +13,7 @@ class ListaAlertas extends Component
 
     public function mount()
     {
-        $this->alertas = Alertas::where('admin_user_id', Auth::id())
+        $this->alertas = Alertas::where('user_id', Auth::id())
                                             ->whereNull('url') // Opcional: Cargar solo notificaciones no leídas
                                             ->get();
 
@@ -26,7 +26,7 @@ class ListaAlertas extends Component
         return view('livewire.lista-alertas');
     }
 
-    public function accion($tipo, $admin_user_id, $alertaId)
+    public function accion($tipo, $user_id, $alertaId)
     {
         $alerta = Alertas::findOrFail($alertaId);
         $alerta->url = "vista";
@@ -38,10 +38,10 @@ class ListaAlertas extends Component
             case 2:
                 // return redirect()->to('admin/pedidos-edit/'.$referenciaId);
             case 3:
-                return redirect()->route('notes.from', $admin_user_id);
+                return redirect()->route('notes.from', $user_id);
                 break;
             case 4:
-                $this->alertas = Alertas::where('user_id', $admin_user_id)
+                $this->alertas = Alertas::where('user_id', $user_id)
                                             ->whereNull('leida') // Opcional: Cargar solo notificaciones no leídas
                                             ->get();
                 break;

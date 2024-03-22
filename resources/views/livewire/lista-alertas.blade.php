@@ -8,7 +8,7 @@
                 <p>{{ $alerta->titulo }}</p>
                 <p style=" margin-bottom:0;">{{ $alerta->descripcion }}</p>
             </div>
-            <button type="button" class="btn btn-primary" wire:click="accion({{ $alerta->tipo }}, {{ $alerta->admin_user_id }}, {{ $alerta->id }})">Acción</button>
+            <button type="button" class="btn btn-primary" wire:click="accion({{ $alerta->tipo }}, {{ $alerta->user_id }}, {{ $alerta->id }})">Acción</button>
         </div>
     @endforeach
     @endif

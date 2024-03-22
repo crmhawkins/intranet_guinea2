@@ -17,7 +17,7 @@ class Budget extends Model
     protected $fillable = [
         'reference',
         'reference_autoincrement_id',
-        'admin_user_id',
+        'user_id',
         'client_id',
         'project_id',
         'payment_method_id',
@@ -45,13 +45,13 @@ class Budget extends Model
         'total_retention',
         'invoiced_advance',
     ];
-    
+
     /**
      * Mutaciones de fecha.
      *
      * @var array
      */
     protected $dates = [
-        'created_at', 'updated_at', 'deleted_at', 
+        'created_at', 'updated_at', 'deleted_at',
     ];
 }

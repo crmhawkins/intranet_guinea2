@@ -35,7 +35,7 @@ class IndexComponent extends Component
     public function render()
     {
         $user = User::find($this->identificador);
-        // dd($this->identificador);   
+        // dd($this->identificador);
         if($this->identificador === Auth::user()->id){
             $this->targetName = $user->name;
             // dd($user);
@@ -43,8 +43,8 @@ class IndexComponent extends Component
             $this->targetName = User::find(1)->name;
             // dd($this->targetName);
         }
-        
-        
+
+
             $this->notas = DB::table('notas')->where('user_id', $user->id)->orderByDesc('created_at')->take(5)->get()->reverse()->values();
 
 
@@ -58,7 +58,7 @@ class IndexComponent extends Component
 
     public function submit()
     {
-        $this->author = Auth::user()->id; 
+        $this->author = Auth::user()->id;
         $this->fecha = now();
 
         if(Auth::user()->role == 1){
@@ -72,7 +72,7 @@ class IndexComponent extends Component
             } else {
                 $this->socio_id = 1;
             }
-            
+
             $this->user_id = Auth::user()->id;
         }
 
@@ -92,7 +92,7 @@ class IndexComponent extends Component
         $validatedData['socio_id'] = $this->socio_id;
         $validatedData['author'] = $this->author;
         $validatedData['fecha'] = $this->fecha;
-        
+
         // dd($validatedData);
         // Guardar datos validados
         $noteSaved = Nota::create($validatedData);
@@ -107,7 +107,7 @@ class IndexComponent extends Component
                 $user_id = $this->socio_id;
             }
             $alerta = Alertas::create([
-                'admin_user_id' => $user_id,
+                'user_id' => $user_id,
                 'titulo' => 'Tienes una nota nueva',
                 'tipo' => 3,
                 'datetime' => now(),

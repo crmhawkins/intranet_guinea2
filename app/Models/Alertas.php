@@ -11,7 +11,7 @@ class Alertas extends Model
 
     protected $table = "alertas";
     protected $fillable = [
-        'admin_user_id',
+        'user_id',
         'titulo',
         'tipo',
         'datetime',

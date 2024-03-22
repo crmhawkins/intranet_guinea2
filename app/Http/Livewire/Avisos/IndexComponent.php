@@ -19,7 +19,7 @@ class IndexComponent extends Component
     public $titulo;
     public $descripcion;
     public $nombre;
-    public $admin_user_id;
+    public $user_id;
     public $tipo;
     public $url;
     public $ruta_archivo;
@@ -28,7 +28,7 @@ class IndexComponent extends Component
     public function mount()
     {
         $this->anuncios = Alertas::all();
-        $this->admin_user_id = Auth::user()->id;
+        $this->user_id = Auth::user()->id;
         $this->user = Auth::user();
         $this->tipo = 1;
 
@@ -55,7 +55,7 @@ class IndexComponent extends Component
         // Validación de datos
         $validatedData = $this->validate(
             [
-                'admin_user_id' => 'required',
+                'user_id' => 'required',
                 'titulo' => 'required',
                 'tipo' => 'required',
                 'datetime' => 'required',
@@ -68,7 +68,7 @@ class IndexComponent extends Component
             [
                 'titulo.required' => 'required',
                 'tipo.required' => 'required',
-                'admin_user_id.required' => 'required',
+                'user_id.required' => 'required',
                 'datetime.required' => 'required',
             ]
         );

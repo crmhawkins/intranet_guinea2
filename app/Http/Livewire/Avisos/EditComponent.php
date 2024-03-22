@@ -20,7 +20,7 @@ class EditComponent extends Component
     public $titulo;
     public $descripcion;
     public $nombre;
-    public $admin_user_id;
+    public $user_id;
     public $tipo;
     public $url;
     public $ruta_archivo;
@@ -37,7 +37,7 @@ class EditComponent extends Component
         $this->url = $this->anuncio->url;
         $this->ruta_archivo = $this->anuncio->ruta_archivo;
         $this->datetime = $this->anuncio->datetime;
-        $this->admin_user_id = $this->anuncio->admin_user_id;
+        $this->user_id = $this->anuncio->user_id;
         $this->user = Auth::user();
         $this->users = User::where('role', 2)->get();
     }
@@ -53,7 +53,7 @@ class EditComponent extends Component
         // Validación de datos
         $validatedData = $this->validate(
             [
-                'admin_user_id' => 'required',
+                'user_id' => 'required',
                 'titulo' => 'required',
                 'tipo' => 'required',
                 'datetime' => 'required',
@@ -66,7 +66,7 @@ class EditComponent extends Component
             [
                 'titulo.required' => 'required',
                 'tipo.required' => 'required',
-                'admin_user_id.required' => 'required',
+                'user_id.required' => 'required',
                 'datetime.required' => 'required',
             ]
         );
