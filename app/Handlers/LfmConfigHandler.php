@@ -12,7 +12,7 @@ class ConfigHandler
 
         // Comprueba si el usuario es administrador
         if (!$user->role == 1) {
-            return $user->id . ' ' . str_replace(' ', '_', $user->name) . str_replace(' ', '_', $user->surname);
+            return $user->id ;
         }else{
             return '';
         }
