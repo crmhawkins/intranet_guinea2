@@ -37,7 +37,7 @@ class CreateComponent extends Component
     public function submit()
     {
         if ($this->isAdminCheckbox == false) {
-            $this->role = 2;
+            $this->role = 0;
         } elseif ($this->isAdminCheckbox == true) {
             $this->role = 1;
         }
