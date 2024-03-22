@@ -13,7 +13,7 @@ class ConfigHandler
         // Comprueba si el usuario es administrador
         if ($user->role == 1) {
             // Retorna un valor nulo o una cadena vacía para dar al administrador acceso al directorio raíz
-            return '';
+            return 'administradores';
         } else {
             // Retorna una carpeta específica para el usuario basada en su ID o nombre de usuario
             return $user->id . ' ' . str_replace(' ', '_', $user->name) . str_replace(' ', '_', $user->surname);
