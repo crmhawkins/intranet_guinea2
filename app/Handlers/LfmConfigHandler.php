@@ -11,7 +11,7 @@ class ConfigHandler
         $user = Auth::user();
 
         // Comprueba si el usuario es administrador
-        if ($user->role = 1) {
+        if ($user->role == 1) {
             // Retorna un valor nulo o una cadena vacía para dar al administrador acceso al directorio raíz
             return '';
         } else {
