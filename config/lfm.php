@@ -35,7 +35,6 @@ return [
     // And set 'user_field' to App\Handler\ConfigHandler::class
     // Ex: The private folder of user will be named as the user id.
     'private_folder_name'      => App\Handler\ConfigHandler::class,
-
     'allow_shared_folder'      => false,
 
     'shared_folder_name'       => 'shares',

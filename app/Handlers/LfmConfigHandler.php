@@ -8,7 +8,7 @@ class ConfigHandler
 {
     public function userField()
     {
-        $user = Auth::user();
+        //$user = Auth::user();
 
         // // Comprueba si el usuario es administrador
         // if (!$user->role == 1) {
@@ -16,12 +16,6 @@ class ConfigHandler
         // }else{
         //     return '';
         // }
-        if ($user->role == 1) {
-            // Administrador, devuelve una cadena vacía para permitir acceso a todo
-            return 'admin';
-        } else {
-            // Usuario no administrador, devuelve su ID para restringir acceso a su carpeta
-            return 'user_' . $user->id;
-        }
+        return auth()->id();
     }
 }
