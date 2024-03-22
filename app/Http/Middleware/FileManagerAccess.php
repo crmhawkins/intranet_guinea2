@@ -11,7 +11,7 @@ class FileManagerAccess
     {
         $user = Auth::user();
 
-        if ($user->role = 1) {
+        if ($user->role == 1) {
             // Opción 1: Dar acceso al directorio raíz a los administradores
             session(['lfm.user_field' => null]);
         } else {
