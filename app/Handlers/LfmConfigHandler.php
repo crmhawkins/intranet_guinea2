@@ -18,7 +18,7 @@ class ConfigHandler
         // }
         if ($user->role == 1) {
             // Administrador, devuelve una cadena vacía para permitir acceso a todo
-            return '';
+            return 'admin';
         } else {
             // Usuario no administrador, devuelve su ID para restringir acceso a su carpeta
             return 'user_' . $user->id;
