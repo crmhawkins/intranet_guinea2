@@ -15,9 +15,14 @@
             background: white;
         }
     </style>
+    @php
+        use Illuminate\Support\Facades\Auth;
+        $user = Auth::user();
+        dd($user);
+    @endphp
     <iframe src="/laravel-filemanager" style="width: 100%; height: 100%;"></iframe>
     {{-- <div style="width: 35%; height: 100%;">
         @yield('notes')
     </div> --}}
-    
+
 @endsection
