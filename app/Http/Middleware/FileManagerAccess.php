@@ -11,7 +11,7 @@ class FileManagerAccess
     {
         $user = Auth::user();
 
-        if (!$user->isAdmin) {
+        if (!$user->role = 1) {
             // Asignar la ruta del directorio del usuario actual a la sesión
             session(['lfm.user_field' => 'user_' . $user->id]);
         }
