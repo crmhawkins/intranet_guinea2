@@ -15,7 +15,7 @@ class FileManagerAccess
             session(['lfm.user_field' => 'carpeta']);
         } else {
             // Asignar la ruta del directorio del usuario actual a la sesión
-            session(['lfm.user_field' => 'carpeta/'. auth()->id() . ' ' . str_replace(' ', '_', auth()->user()->name) . str_replace(' ', '_', auth()->user()->surname)]);
+            session(['lfm.user_field' => 'carpeta/'. auth()->id() . ' ' . str_replace(' ', '_', auth()->user()->name) .'_'. str_replace(' ', '_', auth()->user()->surname)]);
         }
 
         return $next($request);
