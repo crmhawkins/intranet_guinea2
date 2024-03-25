@@ -12,7 +12,7 @@ class ConfigHandler
             return 'carpeta';
         } else {
             // Retorna una carpeta específica para el usuario basada en su ID o nombre de usuario
-            return 'carpeta/'. auth()->id() . ' ' . str_replace(' ', '_', auth()->user()->name) .'_'. str_replace(' ', '_', auth()->user()->surname);
+            return 'carpeta/'. auth()->id() . '_' . str_replace(' ', '_', auth()->user()->name) .'_'. str_replace(' ', '_', auth()->user()->surname);
         }
     }
 }

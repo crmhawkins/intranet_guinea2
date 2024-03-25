@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::table('alertas', function (Blueprint $table) {
             $table->string('titulo')->nullable;
             $table->integer('tipo')->nullable;
+            $table->integer('status_id')->nullable;
             $table->string('ruta_archivo')->nullable;
             $table->string('url')->nullable;
         });
@@ -31,6 +32,7 @@ return new class extends Migration
         Schema::table('alertas', function (Blueprint $table) {
             $table->dropColumn('titulo');
             $table->dropColumn('tipo');
+            $table->dropColumn('status_id');
             $table->dropColumn('ruta_archivo');
             $table->dropColumn('url');
         });
