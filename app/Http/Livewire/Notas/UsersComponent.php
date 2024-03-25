@@ -19,7 +19,7 @@ class UsersComponent extends Component
 
     public function render()
     {
-        $this->usuarios = DB::table('users')->where('role', 0)->get();
+        $this->usuarios = DB::table('users')->where('role', 2)->get();
 
         return view('livewire.notas.users-component');
     }
