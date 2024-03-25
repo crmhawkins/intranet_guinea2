@@ -52,7 +52,6 @@ class CreateComponent extends Component
                 'role' => 'required',
                 'username' => 'required',
                 'password' => 'required',
-                'user_department_id' => 'required',
                 'email' => ['required', 'regex:/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/'],
 
             ],
@@ -63,7 +62,6 @@ class CreateComponent extends Component
                 'role.required' => 'El rol es obligatorio.',
                 'username.required' => 'El nombre de usuario es obligatorio.',
                 'password.required' => 'La contraseña es obligatoria.',
-                'user_department_id.required' => 'El departamento es obligatorio.',
                 'email.required' => 'El email es obligatorio.',
                 'email.regex' => 'Introduce un email válido',
             ]

@@ -14,12 +14,12 @@ class UsersComponent extends Component
 
     public function mount()
     {
-        
+
     }
 
     public function render()
     {
-        $this->usuarios = DB::table('users')->where('role', 3)->get();
+        $this->usuarios = DB::table('users')->where('role', 0)->get();
 
         return view('livewire.notas.users-component');
     }

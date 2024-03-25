@@ -45,14 +45,14 @@ class EditComponent extends Component
         $this->username = $usuarios->username;
         $this->email = $usuarios->email;
         $this->inactive = $usuarios->inactive;
-        $this->comunidad = Comunidad::where('user_id', $this->identificador)->first();
-        if ($this->comunidad != null) {
-            $this->comunidad_nombre = $this->comunidad->nombre;
-            $this->comunidad_direccion = $this->comunidad->direccion;
-            $this->comunidad_info = $this->comunidad->informacion_adicional;
-            $this->comunidad_imagen = $this->comunidad->ruta_imagen;
-            $this->comunidad_secciones = (new Seccion)->getHierarchy($this->comunidad->id);
-        }
+        // $this->comunidad = Comunidad::where('user_id', $this->identificador)->first();
+        // if ($this->comunidad != null) {
+        //     $this->comunidad_nombre = $this->comunidad->nombre;
+        //     $this->comunidad_direccion = $this->comunidad->direccion;
+        //     $this->comunidad_info = $this->comunidad->informacion_adicional;
+        //     $this->comunidad_imagen = $this->comunidad->ruta_imagen;
+        //     $this->comunidad_secciones = (new Seccion)->getHierarchy($this->comunidad->id);
+        // }
     }
 
     public function render()
@@ -165,17 +165,18 @@ class EditComponent extends Component
     public function confirmDelete()
     {
         $usuarios = User::find($this->identificador);
-        $comunidad = Comunidad::where('user_id', $this->identificador)->first();
-        $secciones = Seccion::where('comunidad_id', $comunidad->id)->get();
-        foreach ($secciones as $seccion) {
-            if ($seccion->seccion_incidencias == 0) {
-                $anuncios = Anuncio::where('seccion_id', $seccion->id)->delete();
-            } else {
-                $anuncios = Incidencia::where('comunidad_id', $comunidad->id)->delete();
-            }
-        }
-        $secciones->delete();
-        $comunidad->delete();
+        // $comunidad = Comunidad::where('user_id', $this->identificador)->first();
+        // $secciones = Seccion::where('comunidad_id', $comunidad->id)->get();
+        // foreach ($secciones as $seccion) {
+        //     if ($seccion->seccion_incidencias == 0) {
+        //         $anuncios = Anuncio::where('seccion_id', $seccion->id)->delete();
+        //     } else {
+        //         $anuncios = Incidencia::where('comunidad_id', $comunidad->id)->delete();
+        //     }
+        // }
+        // $secciones->delete();
+        // $comunidad->delete();
+
         $usuarios->delete();
         return redirect()->route('usuarios.index');
     }

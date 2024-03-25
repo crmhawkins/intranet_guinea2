@@ -22,7 +22,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">Nombre</th>
-                                    <th scope="col">DNI</th>
+                                    {{-- <th scope="col">DNI</th> --}}
                                     <th scope="col">Email</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
@@ -30,10 +30,10 @@
                             <tbody>
                                 @foreach ($usuarios as $user)
                                     <tr>
-                                        <td>{{ $user->name }}</td>
-                                        <td>{{ $user->dni }}</td>
+                                        <td>{{ $user->name . " ". $user->surname}}</td>
+                                        {{-- <td>{{ $user->dni }}</td> --}}
                                         <td>{{ $user->email}}</th>
-                                        <td> <a 
+                                        <td> <a
                                             href="{{ route('notes.from', $user->id) }}"
                                             {{-- href="notas-index/{{ $user->id }}" --}}
                                                 class="btn btn-primary">Ver Notas</a> </td>
