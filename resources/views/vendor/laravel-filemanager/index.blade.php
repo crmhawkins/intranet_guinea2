@@ -240,7 +240,7 @@
         multiple: false
       },
       {
-        name: 'delete',
+        name: 'trash',
         icon: 'trash',
         label: lang['menu-delete'],
         multiple: true
