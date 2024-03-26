@@ -180,6 +180,7 @@ class EditComponent extends Component
         $carpetaUsuario = 'carpeta/' . $usuario->id . '_' . str_replace(' ', '_', $usuario->name) . '_' . str_replace(' ', '_', $usuario->surname);
 
         if (Storage::exists($carpetaUsuario)) {
+            dd($carpetaUsuario);
             Storage::deleteDirectory($carpetaUsuario);
         }
 
