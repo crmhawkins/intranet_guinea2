@@ -177,7 +177,7 @@ class EditComponent extends Component
         // }
         // $secciones->delete();
         // $comunidad->delete();
-        $carpetaUsuario = 'carpeta/' . $usuario->id . '_' . str_replace(' ', '_', $usuario->name) . '_' . str_replace(' ', '_', $usuario->surname);
+        $carpetaUsuario = 'storage/files/carpeta/' . $usuario->id . '_' . str_replace(' ', '_', $usuario->name) . '_' . str_replace(' ', '_', $usuario->surname);
 
         if (Storage::exists($carpetaUsuario)) {
             dd($carpetaUsuario);
