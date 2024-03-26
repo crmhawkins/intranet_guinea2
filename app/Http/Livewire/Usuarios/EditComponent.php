@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 
+
 class EditComponent extends Component
 {
     use LivewireAlert;
@@ -164,7 +165,7 @@ class EditComponent extends Component
     // Función para cuando se llama a la alerta
     public function confirmDelete()
     {
-        $usuarios = User::find($this->identificador);
+        $usuario = User::find($this->identificador);
         // $comunidad = Comunidad::where('user_id', $this->identificador)->first();
         // $secciones = Seccion::where('comunidad_id', $comunidad->id)->get();
         // foreach ($secciones as $seccion) {
@@ -176,8 +177,13 @@ class EditComponent extends Component
         // }
         // $secciones->delete();
         // $comunidad->delete();
+        $carpetaUsuario = 'carpeta/' . $usuario->id . '_' . str_replace(' ', '_', $usuario->name) . '_' . str_replace(' ', '_', $usuario->surname);
 
-        $usuarios->delete();
+        if (Storage::exists($carpetaUsuario)) {
+            Storage::deleteDirectory($carpetaUsuario);
+        }
+
+        $usuario->delete();
         return redirect()->route('usuarios.index');
     }
 }
