@@ -284,7 +284,11 @@ function performLfmRequest(url, parameter, type) {
 }
 
 function displayErrorResponse(jqXHR) {
-  notify('<div style="max-height:50vh;overflow: scroll;">' + jqXHR.responseText + '</div>');
+  var message = JSON.parse(jqXHR.responseText)
+  if (Array.isArray(message)) {
+    message = message.join('<br>')
+  }
+  notify('<div style="max-height:50vh;overflow: auto;">' + message + '</div>');
 }
 
 var refreshFoldersAndItems = function (data) {
@@ -418,7 +422,7 @@ function createPagination(paginationSetting) {
   $('#pagination').append(el);
 }
 
-function loadItems(page, searchTerm) {
+function loadItems(page) {
   loading(true);
   performLfmRequest('jsonitems', {show_list: show_list, sort_type: sort_type, page: page || 1}, 'html')
     .done(function (data) {
@@ -436,11 +440,6 @@ function loadItems(page, searchTerm) {
         $('#content').addClass(response.display);
         $('#pagination').addClass('preserve_actions_space');
 
-        if (searchTerm) {
-            items = items.filter(function(item) {
-                return item.name.toLowerCase().includes(searchTerm.toLowerCase());
-            });
-        }
         items.forEach(function (item, index) {
           var template = $('#item-template').clone()
             .removeAttr('id class')
@@ -467,6 +466,7 @@ function loadItems(page, searchTerm) {
 
           $('#content').append(template);
         });
+      }
 
       if (hasPaginator) {
         createPagination(response.paginator);
@@ -479,9 +479,6 @@ function loadItems(page, searchTerm) {
           return false;
         });
       }
-
-
-    }
 
       $('#nav-buttons > ul').removeClass('d-none');
 
@@ -547,7 +544,7 @@ function rename(item) {
 }
 
 function trash(items) {
-  notify(lang['message-delete'], function () {
+  confirm(lang['message-delete'], function () {
     performLfmRequest('delete', {
       items: items.map(function (item) { return item.name; })
     }).done(refreshFoldersAndItems)
@@ -604,7 +601,7 @@ function preview(items) {
     }
 
     carouselItem.find('.carousel-label').attr('target', '_blank').attr('href', item.url)
-      .append(item.name)
+      .text(item.name)
       .append($('<i class="fas fa-external-link-alt ml-2"></i>'));
 
     carousel.children('.carousel-inner').append(carouselItem);
@@ -801,10 +798,14 @@ function notImp() {
   notify('Not yet implemented!');
 }
 
-function notify(body, callback) {
-  $('#notify').find('.btn-primary').toggle(callback !== undefined);
-  $('#notify').find('.btn-primary').unbind().click(callback);
+function notify(body) {
   $('#notify').modal('show').find('.modal-body').html(body);
+}
+
+function confirm(body, callback) {
+  $('#confirm').find('.btn-primary').toggle(callback !== undefined);
+  $('#confirm').find('.btn-primary').click(callback);
+  $('#confirm').modal('show').find('.modal-body').html(body);
 }
 
 function dialog(title, value, callback) {
@@ -817,8 +818,3 @@ function dialog(title, value, callback) {
   });
   $('#dialog').modal('show').find('.modal-title').text(title);
 }
-
-$('#search-input').on('input', function() {
-    var searchTerm = $(this).val();
-    loadItems(1, searchTerm); // Pasamos la página 1 y el término de búsqueda
-});

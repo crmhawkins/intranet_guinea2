@@ -20,9 +20,9 @@
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/cropper.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/dropzone.min.css') }}">
   <link rel="stylesheet" href="{{ asset('vendor/laravel-filemanager/css/mime-icons.min.css') }}">
-  <style>{!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/css/lfm.css')) !!}</style>
+  {{-- <style>{!! \File::get(base_path('vendor/unisharp/laravel-filemanager/public/css/lfm.css')) !!}</style> --}}
   {{-- Use the line below instead of the above if you need to cache the css. --}}
-  {{-- <link rel="stylesheet" href="{{ asset('/vendor/laravel-filemanager/css/lfm.css') }}"> --}}
+    <link rel="stylesheet" href="{{ asset('/vendor/laravel-filemanager/css/lfm.css') }}">
 </head>
 <body>
   <nav class="navbar sticky-top navbar-expand-lg navbar-dark" id="nav">
@@ -36,14 +36,16 @@
     <a class="navbar-brand d-block d-lg-none" id="current_folder"></a>
     <a id="loading" class="navbar-brand"><i class="fas fa-spinner fa-spin"></i></a>
     <div class="ml-auto px-2">
-      <a class="navbar-link d-none" id="multi_selection_toggle">
-        <i class="fa fa-check-double fa-fw"></i>
-        <span class="d-none d-lg-inline">{{ trans('laravel-filemanager::lfm.menu-multiple') }}</span>
-      </a>
+        <a class="navbar-link d-none" id="multi_selection_toggle">
+            <i class="fa fa-check-double fa-fw"></i>
+            <span class="d-none d-lg-inline">{{ trans('laravel-filemanager::lfm.menu-multiple') }}</span>
+        </a>
     </div>
     <a class="navbar-toggler collapsed border-0 px-1 py-2 m-0" data-toggle="collapse" data-target="#nav-buttons">
-      <i class="fas fa-cog fa-fw"></i>
+        <i class="fas fa-cog fa-fw"></i>
     </a>
+    {{-- @if (Auth::user()->role == 1) --}}
+    {{-- @endif --}}
     <div class="collapse navbar-collapse flex-grow-0" id="nav-buttons">
       <ul class="navbar-nav">
         <li class="nav-item">
@@ -79,7 +81,7 @@
 
     <div id="main">
       <div id="alerts"></div>
-      <input type="text" id="search-input" class="form-control mb-1 mt-1" placeholder="Buscar...">
+
       <nav aria-label="breadcrumb" class="d-none d-lg-block" id="breadcrumbs">
         <ol class="breadcrumb">
           <li class="breadcrumb-item invisible">Home</li>
@@ -136,6 +138,17 @@
   </div>
 
   <div class="modal fade" id="notify" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary w-100" data-dismiss="modal">{{ trans('laravel-filemanager::lfm.btn-close') }}</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="confirm" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content">
         <div class="modal-body"></div>
@@ -204,23 +217,30 @@
       //   multiple: true
       // },
       {
-        name: 'rename',
-        icon: 'edit',
-        label: lang['menu-rename'],
-        multiple: false
-      },
+          name: 'download',
+          icon: 'download',
+          label: lang['menu-download'],
+          multiple: true
+        },
+        // {
+            //   name: 'preview',
+            //   icon: 'image',
+            //   label: lang['menu-view'],
+            //   multiple: true
+            // },
+    @if (Auth::user()->role == 1)
+            {
+              name: 'rename',
+              icon: 'edit',
+              label: lang['menu-rename'],
+              multiple: false
+            },
       {
-        name: 'download',
-        icon: 'download',
-        label: lang['menu-download'],
+        name: 'trash',
+        icon: 'trash',
+        label: lang['menu-delete'],
         multiple: true
       },
-      // {
-      //   name: 'preview',
-      //   icon: 'image',
-      //   label: lang['menu-view'],
-      //   multiple: true
-      // },
       {
         name: 'move',
         icon: 'paste',
@@ -239,12 +259,8 @@
         label: lang['menu-crop'],
         multiple: false
       },
-      {
-        name: 'trash',
-        icon: 'trash',
-        label: lang['menu-delete'],
-        multiple: true
-      },
+      @endif
+
     ];
 
     var sortings = [

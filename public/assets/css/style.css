@@ -411,8 +411,8 @@ dt {
 }
 
 .page-item.active .page-link {
-  background-color: #333844;
-  border-color: #333844;
+  background-color: #253B5C;
+  border-color: #253B5C;
 }
 
 .page-link:focus, .page-link:hover {
@@ -812,7 +812,7 @@ dt {
 }
 
 .topbar .topbar-left {
-  background-color: #333844;
+  background-color: #253B5C;
   float: left;
   text-align: center;
   position: relative;
@@ -822,7 +822,7 @@ dt {
 
 .topbar .topbar-left .logo {
   line-height: 70px;
-  color: #333844;
+  color: #253B5C;
   font-size: 18px;
   text-transform: uppercase;
   font-weight: 600;
@@ -834,7 +834,7 @@ dt {
 }
 
 .topbar .navbar-custom {
-  background-color: #333844;
+  background-color: #253B5C;
   margin-bottom: 0;
   padding: 0 10px 0 0;
   min-height: 71px;
@@ -1000,7 +1000,7 @@ dt {
   display: inline-block;
   height: 70px;
   width: 60px;
-  background-color: #333844;
+  background-color: #253B5C;
   font-size: 24px;
 }
 
@@ -1009,7 +1009,7 @@ dt {
     .side-menu {
         width: 100%;
         z-index: 10;
-        background: #333844;
+        background: #253B5C;
         bottom: 0;
         margin-top: 0;
         padding-bottom: 30px;
@@ -1020,7 +1020,7 @@ dt {
 .side-menu {
   width: 240px;
   z-index: 10;
-  background: #333844;
+  background: #253B5C;
   bottom: 0;
   margin-top: 0;
   padding-bottom: 30px;
@@ -1053,7 +1053,7 @@ dt {
 }
 
 #sidebar-menu > ul > li > a:hover, #sidebar-menu > ul > li > a:focus, #sidebar-menu > ul > li > a:active {
-  background-color: #333844;
+  background-color: #253B5C;
   text-decoration: none;
 }
 
@@ -1073,7 +1073,7 @@ dt {
 }
 
 #sidebar-menu > ul > li > a.mm-active {
-  color: #333844 !important;
+  color: #253B5C !important;
   background-color: white;
 }
 
@@ -1087,7 +1087,7 @@ dt {
 }
 
 #sidebar-menu .submenu li.mm-active > a {
-  color: #333844;
+  color: #253B5C;
   background-color: white;
 }
 
@@ -1104,7 +1104,7 @@ dt {
 }
 
 #sidebar-menu .submenu li a:hover {
-  background-color: #333844;
+  background-color: #253B5C;
   color: rgba(255, 255, 255, 0.8);
 }
 
@@ -1163,7 +1163,7 @@ dt {
 .enlarged #wrapper #sidebar-menu ul ul {
   padding-bottom: 5px;
   padding-top: 5px;
-  background-color: #333844;
+  background-color: #253B5C;
 }
 
 .enlarged #wrapper .left.side-menu {
@@ -1180,7 +1180,7 @@ dt {
 .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li:hover > a {
   position: relative;
   width: 260px;
-  color: #333844;
+  color: #253B5C;
   background-color: white;
   z-index: 1;
 }
@@ -1207,7 +1207,7 @@ dt {
 }
 
 .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li:hover > ul a:hover {
-  color: #333844;
+  color: #253B5C;
 }
 
 .enlarged #wrapper .left.side-menu #sidebar-menu > ul > li:hover a span {
@@ -1348,7 +1348,7 @@ dt {
   bottom: 0px;
   right: 0px;
   padding-bottom: 30px;
-  background: #333844;
+  background: #253B5C;
   -webkit-box-shadow: 0px 0px 13px 0px rgba(236, 236, 241, 0.44);
           box-shadow: 0px 0px 13px 0px rgba(236, 236, 241, 0.44);
 }
@@ -1658,8 +1658,8 @@ button:focus {
 }
 
 .btn-primary {
-  background-color: #333844;
-  border: 1px solid #333844;
+  background-color: #253B5C;
+  border: 1px solid #253B5C;
 }
 
 .btn-primary:hover, .btn-primary:focus, .btn-primary:active, .btn-primary.active,

@@ -20,7 +20,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body style="background-color: #333844;">
+<body style="background-color: #253B5C;">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">

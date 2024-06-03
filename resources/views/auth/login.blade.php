@@ -13,7 +13,7 @@
     <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
 </head>
 
-<body style="background-color: #333844;">
+<body style="background-color: #253B5C;">
     <div class="container">
         <div class="row justify-content-center mt-5">
             <div class="col-sm-12 text-center">
@@ -86,7 +86,7 @@
                                 <div class="row mb-0 justify-content-center">
                                     <div class="col-sm-11">
                                         <button type="submit" class="btn w-100"
-                                            style="background-color: #333844 !important;">
+                                            style="background-color: #253B5C !important;">
                                             <span style="color: white !important"><b>{{ __('Iniciar sesión') }}</b></span>
                                         </button>
                                     </div>

@@ -1,7 +1,6 @@
 <?php
 use App\Handlers\ConfigHandler;
 
-
 /*
 |--------------------------------------------------------------------------
 | Documentation for this config :
